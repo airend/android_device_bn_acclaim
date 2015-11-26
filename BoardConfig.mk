@@ -77,6 +77,10 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_KERNEL_CONFIG := cyanogenmod_acclaim_defconfig
 TARGET_KERNEL_SOURCE := kernel/bn/acclaim
 
+ifneq (,$(strip $(wildcard $(TARGET_KERNEL_SOURCE)/drivers/gpu/ion/ion_page_pool.c)))
+export BOARD_USE_TI_LIBION := false
+endif
+
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/img_from_target_files
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/ota_from_target_files
 

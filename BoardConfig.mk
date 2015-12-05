@@ -17,6 +17,8 @@ DEVICE_FOLDER := device/bn/acclaim
 # omap board
 TARGET_BOARD_OMAP_CPU := 4430
 
+TARGET_KERNEL_HAVE_EXFAT := true
+
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
 -include vendor/bn/acclaim/BoardConfigVendor.mk
@@ -118,6 +120,16 @@ SGX_MODULES:
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/pvrsrvkm_sgx540_120.ko
 
 TARGET_KERNEL_MODULES += SGX_MODULES
+
+EXFAT_MODULE:
+	make clean -C external/exfat-nofuse KDIR=$(KERNEL_OUT)
+	make -j8 -C external/exfat-nofuse ARCH=arm CROSS_COMPILE=arm-eabi- KDIR=$(KERNEL_OUT)
+	mv external/exfat-nofuse/exfat.ko $(KERNEL_MODULES_OUT)
+	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/exfat.ko
+
+ifeq ($(TARGET_KERNEL_HAVE_EXFAT),true)
+TARGET_KERNEL_MODULES += EXFAT_MODULE
+endif
 
 BOARD_SEPOLICY_DIRS += \
 	$(DEVICE_FOLDER)/sepolicy

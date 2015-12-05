@@ -45,6 +45,9 @@ on fs
     # change permissions for rfkill
     chmod 0777 /dev/rfkill
 
+    # native exFAT driver
+    insmod /system/lib/modules/exfat.ko
+
 on post-fs
     insmod /system/lib/modules/compat.ko
     insmod /system/lib/modules/cfg80211.ko

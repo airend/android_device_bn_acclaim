@@ -15,6 +15,11 @@
 #
 $(call inherit-product, device/bn/acclaim/full_acclaim.mk)
 
+DEVICE_FOLDER := device/bn/acclaim
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_FOLDER)/prebuilt/etc/media_codecs_ffmpeg.xml.stub:/system/etc/media_codecs_ffmpeg.xml
+
 PRODUCT_NAME := aosp_acclaim
 PRODUCT_MODEL := Nook Tablet
 PRODUCT_RELEASE_NAME := NookTablet

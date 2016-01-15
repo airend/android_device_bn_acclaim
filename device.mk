@@ -148,7 +148,13 @@ $(call inherit-product-if-exists, vendor/bn/acclaim/acclaim-vendor.mk)
 $(call inherit-product-if-exists, vendor/widevine/omap4/widevine-vendor.mk)
 
 # mem
-$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=128m \
+    dalvik.vm.heapsize=256m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=8m
 
 # wifi
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)

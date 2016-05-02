@@ -93,10 +93,6 @@
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
-    <bool name="config_sf_slowBlur">false</bool>
-
-    <bool name="config_sf_limitedAlpha">false</bool>
-
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">16dp</dimen>

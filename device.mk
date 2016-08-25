@@ -47,7 +47,6 @@ PRODUCT_PACKAGES += \
 	127x_TQS_S_2.6.ini \
 	calibrator \
 	crda \
-	dhcpcd.conf \
 	hostapd \
 	hostapd.conf \
 	lib_driver_cmd_wl12xx \

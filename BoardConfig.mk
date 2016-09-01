@@ -20,7 +20,7 @@ TARGET_BOARD_OMAP_CPU := 4430
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
 -include vendor/bn/acclaim/BoardConfigVendor.mk
--include vendor/widevine/omap4/BoardConfigVendor.mk
+-include vendor/widevine/arm-generic/BoardConfigVendor.mk
 
 # inherit from omap4
 include hardware/ti/omap4/BoardConfigCommon.mk

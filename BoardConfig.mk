@@ -66,6 +66,12 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 32
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
+# Configure jemalloc for low-memory
+MALLOC_SVELTE := true
+
+# Use clang platform builds
+USE_CLANG_PLATFORM_BUILD := true
+
 # kernel/boot
 BOARD_KERNEL_BASE := 0x80080000
 BOARD_KERNEL_PAGESIZE := 4096

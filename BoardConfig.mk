@@ -66,6 +66,12 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 32
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
+# Disable journaling on system.img to save space
+BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
+
+# Only pre-optimize the boot image
+WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+
 # Configure jemalloc for low-memory
 MALLOC_SVELTE := true
 

@@ -68,7 +68,6 @@ PRODUCT_PACKAGES += \
 	audio.primary.acclaim \
 	hwcomposer.acclaim \
 	lights.acclaim \
-	power.acclaim \
 	sensors.acclaim
 
 # touchscreen firmware updater tool

@@ -14,9 +14,6 @@
 
 DEVICE_FOLDER := device/bn/acclaim
 
-# omap board
-TARGET_BOARD_OMAP_CPU := 4430
-
 TARGET_KERNEL_HAVE_EXFAT := true
 
 KERNEL_HAS_FINIT_MODULE := false

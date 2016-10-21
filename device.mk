@@ -14,6 +14,8 @@
 
 DEVICE_FOLDER := device/bn/acclaim
 
+TARGET_BOARD_OMAP_CPU := 4430
+
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_FOLDER)/overlay/aosp
 
 # rootfs

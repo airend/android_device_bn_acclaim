@@ -1,0 +1,4 @@
+recovery_only(`
+    allow clearbootdata rootfs:file { getattr };
+    allow clearbootdata proc_net:file { getattr open read };
+')

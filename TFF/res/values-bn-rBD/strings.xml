@@ -16,6 +16,10 @@
      limitations under the License.
 -->
 <resources>
+  <string name="app_name">টাচস্ক্রীন ফার্মওয়ারের পরিবর্তনের ব্যবস্থা</string>
   <string name="current_firmware">বর্তমান ফার্মওয়্যার: </string>
+  <string name="detecting">শনাক্তকারী\u2026</string>
   <string name="you_can_flash">আপনি ফ্ল্যাশ করতে পারেন: </string>
+  <string name="i_understand">আমি সম্পূর্ণরূপে এই প্রক্রিয়ার পরিণতি বুঝতে পেরেছি</string>
+  <string name="help">ফ্ল্যাশ করতে আঙুল তুলে নিন। বাতিল করতে সরিয়ে নিন।</string>
 </resources>

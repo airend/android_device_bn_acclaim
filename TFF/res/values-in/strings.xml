@@ -16,10 +16,10 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Pemutakhir perangkat tegar layar sentuh</string>
-  <string name="current_firmware">Perangkat tegar saat ini: </string>
+  <string name="app_name">Pemutakhir firmware layar sentuh</string>
+  <string name="current_firmware">Firmware saat ini: </string>
   <string name="detecting">Mendeteksi\u2026</string>
   <string name="you_can_flash">Anda dapat memutakhirkan: </string>
   <string name="i_understand">Saya sepenuhnya memahami konsekuensi dari tindakan ini</string>
-  <string name="help">Lepaskan jari untuk memutakhirkan. Geser untuk menyingkirkannya.</string>
+  <string name="help">Lepaskan jari untuk memutakhirkan. Geser untuk membatalkan.</string>
 </resources>

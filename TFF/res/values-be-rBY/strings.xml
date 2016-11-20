@@ -16,10 +16,10 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Instalilo de mikroprogramo por tuŝekrano</string>
-  <string name="current_firmware">Aktuala mikroprogramaro: </string>
-  <string name="detecting">Detektado\u2026</string>
-  <string name="you_can_flash">Vi povas fulmpromocii: </string>
-  <string name="i_understand">Mi plene konscias la konsekvencojn de tiu ago</string>
-  <string name="help">Malpremu fingron por instali. Movu eksteren por nuligi.</string>
+  <string name="app_name">Абнаўленне прашыўкі сэнсорнага экрана</string>
+  <string name="current_firmware">Бягучая версія прашыўкі: </string>
+  <string name="detecting">Вызначэнне\u2026</string>
+  <string name="you_can_flash">Вы можаце прашыць: </string>
+  <string name="i_understand">Я цалкам разумею магчымыя наступствы гэтай аперацыі</string>
+  <string name="help">Адпусціце для пачатку прашыўкі. Ссуньце для скасавання.</string>
 </resources>

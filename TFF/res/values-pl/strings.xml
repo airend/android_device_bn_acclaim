@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Flasher firmware ekranu dotykowego</string>
+  <string name="app_name">Wgrywanie oprogramowania ekranu dotykowego</string>
   <string name="current_firmware">Aktualny firmware:</string>
   <string name="detecting">Rozpoznawanie\u2026</string>
   <string name="you_can_flash">Możesz zflashować:</string>

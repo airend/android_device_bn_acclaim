@@ -29,8 +29,8 @@ macaddr=$(cat "$MACADDR_FILE")
 #
 # We're using printf to write these bytes to the file, so parse the MAC
 # address to produce the escape sequences we'll use as arguments to printf.
-lowbytes=$(echo "$macaddr" | busybox sed -e 's#^\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$#\\x\6\\x\5\\x\4\\x\3#')
-highbytes=$(echo "$macaddr" | busybox sed -e 's#^\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$#\\x\2\\x\1#')
+lowbytes=$(echo "$macaddr" | sed -e 's#^\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$#\\x\6\\x\5\\x\4\\x\3#')
+highbytes=$(echo "$macaddr" | sed -e 's#^\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$#\\x\2\\x\1#')
 
 # Create the new nvs file by copying over the ROM's copy byte by byte,
 # replacing only the pieces containing the MAC address

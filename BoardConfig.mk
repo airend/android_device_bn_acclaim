@@ -16,8 +16,6 @@ DEVICE_FOLDER := device/bn/acclaim
 
 TARGET_KERNEL_HAVE_EXFAT := true
 
-KERNEL_HAS_FINIT_MODULE := false
-
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
 -include vendor/bn/acclaim/BoardConfigVendor.mk

@@ -14,7 +14,8 @@
 
 DEVICE_FOLDER := device/bn/acclaim
 
-TARGET_KERNEL_HAVE_EXFAT := true
+TARGET_KERNEL_HAVE_EXFAT := \
+    $(if $(strip $(wildcard external/*exfat*/Kconfig)),true,)
 
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk

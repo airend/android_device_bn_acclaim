@@ -14,9 +14,6 @@
 
 DEVICE_FOLDER := device/bn/acclaim
 
-TARGET_KERNEL_HAVE_EXFAT := \
-    $(if $(strip $(wildcard external/*exfat*/Kconfig)),true,)
-
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
 -include vendor/bn/acclaim/BoardConfigVendor.mk
@@ -103,38 +100,11 @@ ARM_CROSS_COMPILE ?= $(KERNEL_CROSS_COMPILE)
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/img_from_target_files
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/ota_from_target_files
 
-# wlan build
-WLAN_MODULES:
-	make clean -C hardware/ti/wlan/mac80211/compat_wl12xx
-	make -j8 -C hardware/ti/wlan/mac80211/compat_wl12xx KERNEL_DIR=$(KERNEL_OUT) KLIB=$(KERNEL_OUT) KLIB_BUILD=$(KERNEL_OUT) ARCH=arm CROSS_COMPILE=$(ARM_CROSS_COMPILE)
-	mv hardware/ti/wlan/mac80211/compat_wl12xx/compat/compat.ko $(KERNEL_MODULES_OUT)
-	mv hardware/ti/wlan/mac80211/compat_wl12xx/net/mac80211/mac80211.ko $(KERNEL_MODULES_OUT)
-	mv hardware/ti/wlan/mac80211/compat_wl12xx/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
-	mv hardware/ti/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
-	mv hardware/ti/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx_spi.ko $(KERNEL_MODULES_OUT)
-	mv hardware/ti/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/compat.ko $(KERNEL_MODULES_OUT)/mac80211.ko $(KERNEL_MODULES_OUT)/cfg80211.ko $(KERNEL_MODULES_OUT)/wl12xx.ko $(KERNEL_MODULES_OUT)/wl12xx_spi.ko $(KERNEL_MODULES_OUT)/wl12xx_sdio.ko
+EXFAT_KM_PATH ?= $(dir $(wildcard external/*exfat*/Kconfig))
 
-TARGET_KERNEL_MODULES := WLAN_MODULES
-
-# external SGX module
-SGX_MODULES:
-	make clean -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android
-	cp $(TARGET_KERNEL_SOURCE)/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
-	make -j8 -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android ARCH=arm CROSS_COMPILE=$(ARM_CROSS_COMPILE) KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=540 PLATFORM_VERSION=4.0
-	mv $(KERNEL_OUT)/../../target/kbuild/pvrsrvkm_sgx540_120.ko $(KERNEL_MODULES_OUT)
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/pvrsrvkm_sgx540_120.ko
-
-TARGET_KERNEL_MODULES += SGX_MODULES
-
-EXFAT_MODULE:
-	make clean -C external/exfat-nofuse KDIR=$(KERNEL_OUT)
-	make -j8 -C external/exfat-nofuse ARCH=arm CROSS_COMPILE=$(ARM_CROSS_COMPILE) KDIR=$(KERNEL_OUT)
-	mv external/exfat-nofuse/exfat.ko $(KERNEL_MODULES_OUT)
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/exfat.ko
-
-ifeq ($(TARGET_KERNEL_HAVE_EXFAT),true)
-TARGET_KERNEL_MODULES += EXFAT_MODULE
+ifneq (,$(EXFAT_KM_PATH))
+TARGET_KERNEL_HAVE_EXFAT := true
+include $(EXFAT_KM_PATH)/exfat-km.mk
 endif
 
 BOARD_SEPOLICY_DIRS += \

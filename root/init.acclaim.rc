@@ -15,9 +15,6 @@ on fs
     # mount partitions
     mount_all fstab.acclaim
 
-    # load SGX module
-    insmod /system/lib/modules/pvrsrvkm_sgx540_120.ko
-
     # set kxtf9 permissions
     chown system system /sys/bus/i2c/drivers/kxtf9/1-000f/delay
     chown system system /sys/bus/i2c/drivers/kxtf9/1-000f/enable

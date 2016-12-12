@@ -137,7 +137,8 @@ PRODUCT_PACKAGES += \
 	strace
 
 # platform
-$(call inherit-product-if-exists, hardware/ti/omap4/omap4.mk)
+$(call inherit-product, hardware/ti/omap4/omap4.mk)
+$(call inherit-product, hardware/ti/omap4/pvr-km.mk)
 
 # blobs
 $(call inherit-product-if-exists, vendor/ti/omap4/omap4-vendor.mk)
@@ -155,3 +156,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # wifi
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
+$(call inherit-product, hardware/ti/wlan/mac80211/wl12xx-wlan-modules.mk)

@@ -83,7 +83,7 @@ TARGET_BOOTLOADER_BOARD_NAME := acclaim
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-TARGET_KERNEL_CONFIG := cyanogenmod_acclaim_defconfig
+TARGET_KERNEL_CONFIG := lineageos_acclaim_defconfig
 TARGET_KERNEL_SOURCE := kernel/bn/acclaim
 
 ifneq (,$(strip $(wildcard $(TARGET_KERNEL_SOURCE)/drivers/gpu/ion/ion_page_pool.c)))

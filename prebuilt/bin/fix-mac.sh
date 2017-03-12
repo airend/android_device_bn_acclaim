@@ -2,6 +2,7 @@
 # store-mac-addr -- reads configured wifi MAC address and writes it into nvs
 # file for use by the wl12xx driver
 
+WLAN_MODULE=wlcore_sdio; WLAN_PATH=/system/lib/modules/${WLAN_MODULE}.ko
 ROM_NVS=/system/etc/firmware/ti-connectivity/wl1271-nvs_127x.bin
 ORIG_NVS=/data/misc/wifi/wl1271-nvs.bin.orig
 NEW_NVS=/data/misc/wifi/wl1271-nvs.bin
@@ -15,8 +16,7 @@ umask 0022
 # changed since the last boot and the MAC address of the device hasn't changed
 cmp "$ROM_NVS" "$ORIG_NVS" > /dev/null 2>&1 && \
     cmp "$MACADDR_FILE" "$MACADDR_COPY" > /dev/null 2>&1 && \
-    insmod /system/lib/modules/wl12xx_sdio.ko && \
-    exit 0
+    insmod $WLAN_PATH && exit 0
 
 # Get the MAC address
 macaddr=$(cat "$MACADDR_FILE")
@@ -48,6 +48,6 @@ cp "$ROM_NVS" "$ORIG_NVS"
 # the NVS file accordingly
 cp "$MACADDR_FILE" "$MACADDR_COPY"
 
-insmod /system/lib/modules/wl12xx_sdio.ko
+insmod $WLAN_PATH
 
 exit 0

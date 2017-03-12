@@ -156,5 +156,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapmaxfree=8m
 
 # wifi
-$(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
-$(call inherit-product, hardware/ti/wlan/mac80211/wl12xx-wlan-modules.mk)
+PRODUCT_PACKAGES += $(addsuffix .bin,$(addprefix \
+    wl127x-fw-5-,sr mr plt) wl1271-nvs_127x)
+
+$(call inherit-product, hardware/ti/wlan/mac80211/wl18xx-wlan-modules.mk)

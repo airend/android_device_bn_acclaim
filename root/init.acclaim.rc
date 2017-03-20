@@ -84,9 +84,6 @@ on boot
 on property:dev.bootcomplete=1
     start clearbootdata
 
-on property:wifi.ready=1
-   insmod /system/lib/modules/wl12xx_sdio.ko
-
 service fixmac /system/bin/fix-mac.sh
     class core
     seclabel u:r:fixmac:s0

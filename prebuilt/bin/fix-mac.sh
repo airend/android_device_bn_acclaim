@@ -15,7 +15,7 @@ umask 0022
 # changed since the last boot and the MAC address of the device hasn't changed
 cmp "$ROM_NVS" "$ORIG_NVS" > /dev/null 2>&1 && \
     cmp "$MACADDR_FILE" "$MACADDR_COPY" > /dev/null 2>&1 && \
-    setprop wifi.ready 1 && \
+    insmod /system/lib/modules/wl12xx_sdio.ko && \
     exit 0
 
 # Get the MAC address
@@ -48,5 +48,6 @@ cp "$ROM_NVS" "$ORIG_NVS"
 # the NVS file accordingly
 cp "$MACADDR_FILE" "$MACADDR_COPY"
 
-setprop wifi.ready 1
+insmod /system/lib/modules/wl12xx_sdio.ko
+
 exit 0

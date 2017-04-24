@@ -13,14 +13,21 @@
 # limitations under the License.
 
 # Inherit device configuration for acclaim
+DEVICE_FOLDER := device/bn/acclaim
 
-$(call inherit-product, device/bn/acclaim/full_acclaim.mk)
+$(call inherit-product, $(DEVICE_FOLDER)/full_acclaim.mk)
 $(call inherit-product-if-exists, vendor/cm/config/common_full_tablet_wifionly.mk)
 TARGET_SCREEN_WIDTH := 480
 TARGET_SCREEN_HEIGHT := 1024
 TARGET_BOOTANIMATION_HALF_RES := true
 
-DEVICE_PACKAGE_OVERLAYS += device/bn/acclaim/overlay/cm
+DEVICE_PACKAGE_OVERLAYS += $(DEVICE_FOLDER)/overlay/cm
+
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_FOLDER)/recovery/extensions
+
+# Device & filesystem
+PRODUCT_PACKAGES += \
+    resize2fs_static
 
 PRODUCT_NAME := cm_acclaim
 PRODUCT_DEVICE := acclaim

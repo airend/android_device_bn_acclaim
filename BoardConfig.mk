@@ -14,6 +14,8 @@
 
 DEVICE_FOLDER := device/bn/acclaim
 
+OMAP_ENHANCEMENT_HWC_EXTENDED_API := true
+
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
 -include vendor/bn/acclaim/BoardConfigVendor.mk

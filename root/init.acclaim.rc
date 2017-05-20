@@ -84,6 +84,9 @@ on boot
 on property:dev.bootcomplete=1
     start clearbootdata
 
+on property:wlan.driver.status=ok
+    chown wifi wifi /sys/devices/platform/wl1271/bt_coex_state
+
 service fixmac /system/bin/fix-mac.sh
     class core
     seclabel u:r:fixmac:s0

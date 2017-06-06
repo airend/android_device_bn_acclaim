@@ -102,9 +102,6 @@ endif
 
 ARM_CROSS_COMPILE ?= $(KERNEL_CROSS_COMPILE)
 
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/img_from_target_files
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/ota_from_target_files
-
 EXFAT_KM_PATH ?= $(dir $(wildcard external/*exfat*/Kconfig))
 
 ifneq (,$(EXFAT_KM_PATH))
@@ -116,6 +113,7 @@ BOARD_SEPOLICY_DIRS += \
 	$(DEVICE_FOLDER)/sepolicy
 
 # boot.img
+BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_FOLDER)/boot.mk
 TARGET_NO_BOOTLOADER := true
 TARGET_PROVIDES_RELEASETOOLS := true
